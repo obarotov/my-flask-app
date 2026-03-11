@@ -32,7 +32,7 @@ def students():
 
 @app.route("/student/<name>")
 def student_detail(name):
-    search_name = name.title() 
+    name  = name.title() 
 
     students_data = {
         "Abdul-Aziz": 77, "Abdullo": 47, "Abubakr": 59,
@@ -46,10 +46,10 @@ def student_detail(name):
         "Nizar": 72,
     }
 
-    if search_name not in students_data:
+    if name not in students_data:
         return render_template("/404.html")
     
-    score = students_data[search_name]
+    score = students_data[name]
     
     if score >= 80:
         result = 'Excellent'
@@ -60,7 +60,7 @@ def student_detail(name):
     else:
         result = "No data"
     
-    return render_template("student.html", name=search_name, score=score, result=result)
+    return render_template("student.html", name=name, score=score, result=result)
 
 
 if __name__ == "__main__":
