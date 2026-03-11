@@ -43,16 +43,23 @@ def students():
 
  return render_template('students.html', students=sorted_students)
 
-@app.route("/grade/<name>/<int:score>")
-def grade(name,score):
-    if score >= 80:
-        result = "Excellent"
-    elif score >= 50:
-        result = "Good"
-    else:
-        result = "Needs practice"
-    return f"{name}: {score}% - {result}"
+@app.route("/student/<name>")
+def grade(name):
+    if name not in students_data:
+       return f"404 \n Student not found"
+    
+    score = students_data[name]
 
+    if score > 80:
+       result = 'Excellent'
+    elif 50 <=  score <= 79:
+       result = "Good"
+    elif 1 <= score <= 49:
+       result = "Needs improvement"
+    elif score == 0:
+       result = "Not enough data"
+    
+    return f"{name}: {score}% - {result}"
 
 
 if __name__ == "__main__":
