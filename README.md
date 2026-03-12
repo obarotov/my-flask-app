@@ -256,6 +256,7 @@ flask_app/
 │
 └── static/
     └── style.css
+    └── script.js
 ```
 
 ---
