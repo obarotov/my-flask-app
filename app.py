@@ -71,12 +71,11 @@ def one_student(name):
     name = name.title()
     if name not in students_data:
         return jsonify({"error": "Student not found"}), 404
-   
     score = students_data[name]
     if score >= 80:
         feedback = 'Excellent'
     elif 50 <= score <= 79:
-        print("Good")
+        feedback = "Good"
     elif 1 <= score <= 49:
         feedback = "Needs improvement"
     else:
